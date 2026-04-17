@@ -2,6 +2,8 @@
   "dependencies": {
     "@types/node": "^18.0.0",
     "@types/prompt-sync": "^4.1.1",
+    "is-even": "^1.0.0",
+    "is-thirteen": "^2.0.0",
     "prompt-sync": "^4.2.0"
   }
 }

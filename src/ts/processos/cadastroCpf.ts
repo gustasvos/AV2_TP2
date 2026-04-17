@@ -2,10 +2,8 @@ import Processo from "../abstracoes/processo";
 import { TipoDocumento } from "../enumeracoes/TipoDocumento";
 import Cliente from "../modelos/cliente";
 import Documento from "../modelos/documento";
-// @ts-ignore
-import isEven from "is-even"
 
-export default class CadastroRg extends Processo {
+export default class CadastroCpf extends Processo {
     private cliente: Cliente
 
     constructor(cliente: Cliente) {
@@ -17,10 +15,10 @@ export default class CadastroRg extends Processo {
         let numero = ''
 
         while (true) {
-            numero = this.entrada.receberTexto('Qual o número do RG? (somente números)')
+            numero = this.entrada.receberTexto('Qual o CPF? (somente números)')
 
             if (!numero) {
-                console.log('RG obrigatório.')
+                console.log('CPF obrigatório.')
                 continue
             }
 
@@ -31,9 +29,9 @@ export default class CadastroRg extends Processo {
                 continue
             }
 
-            // só quantidade, sem rgs reais
-            if (numero.length !== 9) {
-                console.log('RG deve conter 9 dígitos.')
+            // validação apenas de quantidade de digitos, sem validar cpfs reais
+            if (numero.length !== 11) {
+                console.log('CPF deve conter 11 dígitos.')
                 continue
             }
 
@@ -41,8 +39,8 @@ export default class CadastroRg extends Processo {
         }
 
         // mascara
-        let rgFormatado = numero.replace(
-            /(\d{2})(\d{3})(\d{3})(\d{1})/,
+        let cpfFormatado = numero.replace(
+            /(\d{3})(\d{3})(\d{3})(\d{2})/,
             '$1.$2.$3-$4'
         )
 
@@ -50,12 +48,12 @@ export default class CadastroRg extends Processo {
             'Qual a data de expedição do documento?'
         )
 
-        let rg = new Documento(
-            rgFormatado,
-            TipoDocumento.RG,
+        let cpf = new Documento(
+            cpfFormatado,
+            TipoDocumento.CPF,
             dataExpedicao
         )
 
-        this.cliente.Documentos.push(rg)
+        this.cliente.Documentos.push(cpf)
     }
 }
