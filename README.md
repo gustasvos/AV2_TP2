@@ -1,4 +1,4 @@
-# AV2 - Desenvolvimento Web III Fatec SJC
+# AV2 - Técnicas de Programação II Fatec SJC
 
 **Requisitos: Node, npm e Typescript** 
 
